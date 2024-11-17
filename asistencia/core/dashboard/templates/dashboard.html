@@ -1,0 +1,400 @@
+{% extends 'list.html' %}
+{% load static %}
+
+{% block head_list_extra %}
+
+    {# Funciones del daschboard #}
+    <script src="{% static 'js/dashboard.js' %}"></script>
+
+    {# Estilos del daschboard #}
+    <link rel="stylesheet" href="{% static 'css/dash-style.css' %}">
+
+{% endblock %}
+
+{% block con %}
+
+    {#    <div class="container">#}
+    {#        <div class="row">#}
+    {##}
+    {#            <div class="col-md-3 ">#}
+    {#                <div class="small-box bg-success shadow-lg">#}
+    {#                    <div class="inner">#}
+    {#                        <h3 id="complete">0</h3>#}
+    {##}
+    {#                        <p>Completas</p>#}
+    {#                    </div>#}
+    {#                    <div class="icon">#}
+    {#                        <i class="fa fa-check-circle"></i>#}
+    {#                    </div>#}
+    {#                    <a id="btnComplete" class="small-box-footer" style="cursor: pointer;">Mas informacion <i#}
+    {#                            class="fas fa-arrow-circle-right"></i></a>#}
+    {#                </div>#}
+    {#            </div>#}
+    {# //END FIRST #}
+    {##}
+    {#            <div class="col-md-3">#}
+    {#                <div class="small-box bg-secondary shadow-lg">#}
+    {#                    <div class="inner">#}
+    {#                        <h3 id="revision">0</h3>#}
+    {##}
+    {#                        <p>Revision</p>#}
+    {#                    </div>#}
+    {#                    <div class="icon">#}
+    {#                        <i class="fa fa-list-alt"></i>#}
+    {#                    </div>#}
+    {#                    <a id="btnRevision" class="small-box-footer" style="cursor: pointer;">Mas informacion <i#}
+    {#                            class="fas fa-arrow-circle-right"></i></a>#}
+    {#                </div>#}
+    {#            </div>#}
+    {# //END SECOND #}
+    {##}
+    {#            <div class="col-md-3">#}
+    {#                <div class="small-box bg-danger shadow-lg">#}
+    {#                    <div class="inner">#}
+    {#                        <h3 id="pending">0</h3>#}
+    {##}
+    {#                        <p>Pendientes</p>#}
+    {#                    </div>#}
+    {#                    <div class="icon">#}
+    {#                        <i class="fa fa-clock"></i>#}
+    {#                    </div>#}
+    {#                    <a id="btnPending" class="small-box-footer" style="cursor: pointer;">Mas informacion <i#}
+    {#                            class="fas fa-arrow-circle-right"></i></a>#}
+    {#                </div>#}
+    {#            </div>#}
+    {# //END THIRD #}
+    {##}
+    {#            <div class="col-md-3">#}
+    {#                <div class="small-box bg-info shadow-lg">#}
+    {#                    <div class="inner">#}
+    {#                        <h3 id="total">0</h3>#}
+    {##}
+    {#                        <p>Total de Cajas</p>#}
+    {#                    </div>#}
+    {#                    <div class="icon">#}
+    {#                        <i class="fa fa-box"></i>#}
+    {#                    </div>#}
+    {#                    <a id="btnBox" class="small-box-footer" style="cursor: pointer;">Mas informacion <i#}
+    {#                            class="fas fa-arrow-circle-right"></i></a>#}
+    {#                </div>#}
+    {#            </div>#}
+    {# //END THIRD #}
+    {#        </div>#}
+    {#    </div>#}
+
+    {#    <div class="card card-outline card-navy" id="cardEmail" style="display: none">#}
+    {#        <div class="card-header">#}
+    {#            <h5 class="card-title"><i class="fas fa-mail-bulk"></i> Correos pendientes de enviar</h5>#}
+    {#        </div>#}
+    {##}
+    {#        <div class="card-body">#}
+    {#            <table class="table  table-bordered" id="tableEmail">#}
+    {#                <thead>#}
+    {#                <tr id="trow" rel="rowTable">#}
+    {#                </tr>#}
+    {#                </thead>#}
+    {#                <tbody>#}
+    {#                </tbody>#}
+    {#            </table>#}
+    {#        </div>#}
+    {##}
+    {#    </div>#}
+    <section class="section dashboard">
+        <div class="row">
+
+            <!-- Left side columns -->
+            <div class="col-lg-8">
+                <div class="row">
+
+                    <!-- Completas Card -->
+                    <div class="col-xxl-4 col-md-6">
+                        <div class="card info-card sales-card">
+
+                            <div class="filter">
+                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                    <li class="dropdown-header text-start">
+                                        <h6>Filtro</h6>
+                                    </li>
+
+                                    <li><a class="dropdown-item" href="#">Hoy</a></li>
+                                    <li><a class="dropdown-item" href="#">Este mes</a></li>
+                                    <li><a class="dropdown-item" href="#">Este año</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title">Completas <span>| Hoy</span></h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-check-circle"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6 id="complete">0</h6>
+                                        <span class="text-success small pt-1 fw-bold">12%</span>
+                                        <span class="text-muted small pt-2 ps-1">más</span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- End Complete Card -->
+
+                    <!-- Revision Card -->
+                    <div class="col-xxl-4 col-md-6">
+                        <div class="card info-card revenue-card">
+
+                            <div class="filter">
+                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                    <li class="dropdown-header text-start">
+                                        <h6>Filtro</h6>
+                                    </li>
+
+                                    <li><a class="dropdown-item" href="#">Hoy</a></li>
+                                    <li><a class="dropdown-item" href="#">Este mes</a></li>
+                                    <li><a class="dropdown-item" href="#">Este Año</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title">Revisión <span>| Este mes</span></h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-list-check"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6 id="revision">0</h6>
+                                        <span class="text-success small pt-1 fw-bold">8%</span>
+                                        <span class="text-muted small pt-2 ps-1">más</span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- End Revision Card -->
+
+                    <!-- Pendientes Card -->
+                    <div class="col-xxl-4 col-md-6">
+
+                        <div class="card info-card customers-card">
+
+                            <div class="filter">
+                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                    <li class="dropdown-header text-start">
+                                        <h6>Filtro</h6>
+                                    </li>
+
+                                    <li><a class="dropdown-item" href="#">Hoy</a></li>
+                                    <li><a class="dropdown-item" href="#">Este Mes</a></li>
+                                    <li><a class="dropdown-item" href="#">Este año</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title">Pendientes <span>| Hoy </span></h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-clock"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6 id="pending">0</h6>
+                                        <span class="text-danger small pt-1 fw-bold">12%</span> <span
+                                            class="text-muted small pt-2 ps-1">menos</span>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div><!-- End Pending Card -->
+
+                    <!-- All boxes Card -->
+                    <div class="col-xxl-4 col-md-6">
+
+                        <div class="card info-card all-box-card">
+
+                            <div class="filter">
+                                <a class="icon" href="#" data-bs-toggle="dropdown"><i
+                                        class="bi bi-three-dots"></i></a>
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                    <li class="dropdown-header text-start">
+                                        <h6>Filtro</h6>
+                                    </li>
+
+                                    <li><a class="dropdown-item" href="#">Hoy</a></li>
+                                    <li><a class="dropdown-item" href="#">Este mes</a></li>
+                                    <li><a class="dropdown-item" href="#">Este Año</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title">Total Cajas <span>| Este Año</span></h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6 id="total">0</h6>
+                                        <span class="text-danger small pt-1 fw-bold">12%</span>
+                                        <span
+                                                class="text-muted small pt-2 ps-1">menos</span>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div><!-- End All boxes Card -->
+
+                    <!-- Reports -->
+                    {#                    <div class="col-12">#}
+                    {#                        <div class="card">#}
+                    {##}
+                    {#                            <div class="filter">#}
+                    {#                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>#}
+                    {#                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">#}
+                    {#                                    <li class="dropdown-header text-start">#}
+                    {#                                        <h6>Filter</h6>#}
+                    {#                                    </li>#}
+                    {##}
+                    {#                                    <li><a class="dropdown-item" href="#">Today</a></li>#}
+                    {#                                    <li><a class="dropdown-item" href="#">This Month</a></li>#}
+                    {#                                    <li><a class="dropdown-item" href="#">This Year</a></li>#}
+                    {#                                </ul>#}
+                    {#                            </div>#}
+                    {##}
+                    {#                            <div class="card-body">#}
+                    {#                                <h5 class="card-title">Reports <span>/Today</span></h5>#}
+                    {##}
+                    {#                                <!-- Line Chart -->#}
+                    {#                                <div id="reportsChart"></div>#}
+                    {##}
+                    {#                                <script>#}
+                    {#                                    document.addEventListener("DOMContentLoaded", () => {#}
+                    {#                                        new ApexCharts(document.querySelector("#reportsChart"), {#}
+                    {#                                            series: [{#}
+                    {#                                                name: 'Sales',#}
+                    {#                                                data: [31, 40, 28, 51, 42, 82, 56],#}
+                    {#                                            }, {#}
+                    {#                                                name: 'Revenue',#}
+                    {#                                                data: [11, 32, 45, 32, 34, 52, 41]#}
+                    {#                                            }, {#}
+                    {#                                                name: 'Customers',#}
+                    {#                                                data: [15, 11, 32, 18, 9, 24, 11]#}
+                    {#                                            }],#}
+                    {#                                            chart: {#}
+                    {#                                                height: 350,#}
+                    {#                                                type: 'area',#}
+                    {#                                                toolbar: {#}
+                    {#                                                    show: false#}
+                    {#                                                },#}
+                    {#                                            },#}
+                    {#                                            markers: {#}
+                    {#                                                size: 4#}
+                    {#                                            },#}
+                    {#                                            colors: ['#4154f1', '#2eca6a', '#ff771d'],#}
+                    {#                                            fill: {#}
+                    {#                                                type: "gradient",#}
+                    {#                                                gradient: {#}
+                    {#                                                    shadeIntensity: 1,#}
+                    {#                                                    opacityFrom: 0.3,#}
+                    {#                                                    opacityTo: 0.4,#}
+                    {#                                                    stops: [0, 90, 100]#}
+                    {#                                                }#}
+                    {#                                            },#}
+                    {#                                            dataLabels: {#}
+                    {#                                                enabled: false#}
+                    {#                                            },#}
+                    {#                                            stroke: {#}
+                    {#                                                curve: 'smooth',#}
+                    {#                                                width: 2#}
+                    {#                                            },#}
+                    {#                                            xaxis: {#}
+                    {#                                                type: 'datetime',#}
+                    {#                                                categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]#}
+                    {#                                            },#}
+                    {#                                            tooltip: {#}
+                    {#                                                x: {#}
+                    {#                                                    format: 'dd/MM/yy HH:mm'#}
+                    {#                                                },#}
+                    {#                                            }#}
+                    {#                                        }).render();#}
+                    {#                                    });#}
+                    {#                                </script>#}
+                    {#                                <!-- End Line Chart -->#}
+                    {##}
+                    {#                            </div>#}
+                    {##}
+                    {#                        </div>#}
+                    {#                    </div><!-- End Reports -->#}
+
+                    <!-- Cajas recientes y top sucursales -->
+                    <div class="col-12">
+                        <div class="card recent-sales overflow-auto">
+
+                            <div class="filter">
+                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                    <li class="dropdown-header text-start">
+                                        <h6>Filtro</h6>
+                                    </li>
+
+                                    <li><a class="dropdown-item" href="#">Completas</a></li>
+                                    <li><a class="dropdown-item" href="#">Revisión</a></li>
+                                    <li><a class="dropdown-item" href="#">Pendientes</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title">Top sucursales </h5>
+
+                                <table class="table table-borderless datatable" id="tableDash">
+                                    <thead>
+                                    <tr id="trow" rel="rowListDash">
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div><!-- End Cajas recientes y top sucursales -->
+
+
+                </div>
+            </div><!-- End Left side columns -->
+
+            <!-- Right side columns -->
+            <div class="col-lg-4">
+
+                <!-- Recent Activity -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Agregado Recientemente <span>| Hoy</span></h5>
+
+                        <div class="activity" id="recentAdded">
+
+                            {# Aqui se añaden la informacion con las cajas recientes #}
+
+                        </div>
+
+                    </div>
+                </div><!-- End Recent Activity -->
+
+            </div><!-- End Right side columns -->
+
+        </div>
+    </section>
+{% endblock %}
