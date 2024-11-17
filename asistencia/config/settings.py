@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 
+from config import db
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -89,16 +91,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'cronos',
-        'USER': 'postgres',
-        'PASSWORD': '00Dascher',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+DATABASES = db.SERVER
 
 # AUTH USER MODEL
 
