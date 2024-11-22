@@ -7,14 +7,14 @@ from config import settings
 
 class User(AbstractUser):
     ROll_CHOICES = (
-        ('student', 'Estudiante'),
-        ('teacher', 'Profesor'),
+        ('STUDENT', 'Estudiante'),
+        ('TEACHER', 'Profesor'),
     )
     GENDER_CHOICES = (
         ('M', 'MASCULINO'),
         ('F', 'FEMENINO'),
     )
-    roll = models.CharField(max_length=10, default='student', choices=ROll_CHOICES, verbose_name="Roll")
+    roll = models.CharField(max_length=10, default='STUDENT', choices=ROll_CHOICES, verbose_name="Roll")
     phone_number = models.CharField(max_length=8, null=True, verbose_name='Numero de telefono')
     image = models.ImageField(upload_to='users/%Y/%m/%d', null=True, blank=True, verbose_name='Imagen')
     gender = models.CharField(max_length=1, default='M', choices=GENDER_CHOICES, verbose_name='Genero')
@@ -35,7 +35,7 @@ class User(AbstractUser):
         data = [
             self.id, self.get_full_name(), self.username, self.phone_number, self.date_joined.strftime('%Y-%m-%d'),
             self.get_image(), self.is_superuser, last_login, self.is_active,
-            groups, self.presale
+            groups, self.id
         ]
         return data
 

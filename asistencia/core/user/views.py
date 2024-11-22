@@ -6,8 +6,8 @@ from django.http import JsonResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View, FormView
 
-from core.pos.mixins import ValidatePermissionRequiredMixin
 from core.user.forms import UserForm, UserProfileForm
+from core.user.mixins import ValidatePermissionRequiredMixin
 from core.user.models import User
 
 
