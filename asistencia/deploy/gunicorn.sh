@@ -4,8 +4,8 @@ NAME="cronos"
 DJANGODIR=$(dirname $(cd `dirname $0` && pwd))
 SOCKFILE=/tmp/gunicorn-cronos.sock
 LOGDIR=${DJANGODIR}/logs/gunicorn.log
-USER=mateo
-GROUP=mateo
+USER=cronos
+GROUP=cronos
 NUM_WORKERS=5
 DJANGO_WSGI_MODULE=config.wsgi_production
 
