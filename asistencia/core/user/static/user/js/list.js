@@ -4,13 +4,6 @@ var user = {
             targets: [0],
             class: 'text-center',
             orderable: false,
-            render: function (data, type, row) {
-                if (row[9] === true) {
-                    return '<span class="badge badge-success badge-pill">' + 'Pre venta' + '</span>';
-                } else {
-                    return ' ';
-                }
-            }
         },
         {
             targets: [5],
@@ -26,9 +19,9 @@ var user = {
             orderable: false,
             render: function (data, type, row) {
                 if (data === true) {
-                    return '<span class="badge badge-success badge-pill">' + 'Si' + '</span>';
+                    return `<span class="badge rounded-pill bg-success">Si</span>`
                 } else {
-                    return '<span class="badge badge-danger badge-pill">' + 'No' + '</span>';
+                    return `<span class="badge rounded-pill bg-danger">No</span>`
                 }
             }
         },
@@ -61,7 +54,7 @@ var user = {
             class: 'text-center',
             orderable: false,
             render: function (data, type, row) {
-                return '<a href="' + pathname + 'update/' + row[0] + '/" class="btn btn-warning btn-xs btn-flat"><i class="fas fa-edit"></i></a> ';
+                return '<a href="' + pathname + 'update/' + row[0] + '/" class="btn btn-warning btn-xs btn-flat"><i class="bi bi-pencil-square"></i></a> ';
                 // buttons += '<a rel="delete" type="button" class="btn btn-danger btn-xs btn-flat"><i class="fas fa-trash-alt"></i></a>';
                 // return buttons;
             }

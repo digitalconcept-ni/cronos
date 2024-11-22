@@ -48,9 +48,11 @@ LOCAL_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    # 'widget_tweaks',
+    'widget_tweaks',
     'rest_framework',
     'rest_framework.authtoken',
+    'django_user_agents',
+
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
@@ -63,6 +65,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_user_agents.middleware.UserAgentMiddleware',
+
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -140,7 +144,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Media files
 
@@ -168,4 +172,3 @@ REST_FRAMEWORK = {
 }
 
 SESSION_COOKIE_NAME = 'cronos'
-
