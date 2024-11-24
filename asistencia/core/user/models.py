@@ -14,7 +14,7 @@ class User(AbstractUser):
         ('M', 'MASCULINO'),
         ('F', 'FEMENINO'),
     )
-    roll = models.CharField(max_length=10, default='STUDENT', choices=ROll_CHOICES, verbose_name="Roll")
+    roll = models.CharField(max_length=10, default='STUDENT', null=True, blank=True, choices=ROll_CHOICES, verbose_name="Roll")
     phone_number = models.CharField(max_length=8, null=True, verbose_name='Numero de telefono')
     image = models.ImageField(upload_to='users/%Y/%m/%d', null=True, blank=True, verbose_name='Imagen')
     gender = models.CharField(max_length=1, default='M', choices=GENDER_CHOICES, verbose_name='Genero')
