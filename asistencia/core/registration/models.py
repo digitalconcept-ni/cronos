@@ -7,7 +7,7 @@ from core.user.models import User
 # Create your models here.
 
 class Departament(models.Model):
-    name = models.CharField(max_length=50, null=True, blank=True)
+    name = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nombre del Departamento')
 
     class Meta:
         verbose_name = 'departamento'
@@ -16,6 +16,16 @@ class Departament(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+    def toJSON(self):
+        item = model_to_dict(self)
+        return item
+
+    def toLIST(self):
+        item = [
+            self.id, self.name
+        ]
+        return item
 
 
 class Career(models.Model):
@@ -29,7 +39,17 @@ class Career(models.Model):
         ordering = ['-id']
 
     def __str__(self):
-        return f'{self.name} - {self.code}'
+        return f'{self.departament.name} - {self.name} - {self.code}'
+
+    def toJSON(self):
+        item = model_to_dict(self)
+        return item
+
+    def toLIST(self):
+        item = [
+            self.id, self.departament.name, self.name, self.code, self.id
+        ]
+        return item
 
 
 class Pensum(models.Model):
@@ -43,6 +63,16 @@ class Pensum(models.Model):
 
     def __str__(self):
         return f'{self.career} - {self.name}'
+
+    def toJSON(self):
+        item = model_to_dict(self)
+        return item
+
+    def toLIST(self):
+        item = [
+            self.id, self.career.__str__(), self.name
+        ]
+        return item
 
 
 """
@@ -62,7 +92,17 @@ class Subject(models.Model):
         ordering = ['-id']
 
     def __str__(self):
-        return f'{self.user} - {self.code}'
+        return f'{self.name} - {self.code}'
+
+    def toJSON(self):
+        item = model_to_dict(self)
+        return item
+
+    def toLIST(self):
+        item = [
+            self.id, self.pensum.__str__(), self.code, self.name, self.description
+        ]
+        return item
 
 
 """
@@ -143,10 +183,11 @@ class InscriptionSubject(models.Model):
     inscription = models.ForeignKey(Inscription, on_delete=models.CASCADE, verbose_name='Inscripcion', null=True)
     group = models.ForeignKey(Group, on_delete=models.CASCADE, verbose_name='Grupo', null=True)
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE, verbose_name='Aula', null=True)
-    user_subject = models.ForeignKey(UserSubject, on_delete=models.CASCADE, verbose_name='Asignatura', null=True)  # Relacion con
+    user_subject = models.ForeignKey(UserSubject, on_delete=models.CASCADE, verbose_name='Asignatura',
+                                     null=True)  # Relacion con
     date_start = models.DateField(verbose_name='Fecha inicio', null=True)
-    date_end = models.DateField(verbose_name='Fecha fin',null=True)
-    time_start = models.TimeField(verbose_name='Hora inicio',null=True)
+    date_end = models.DateField(verbose_name='Fecha fin', null=True)
+    time_start = models.TimeField(verbose_name='Hora inicio', null=True)
     time_end = models.TimeField(verbose_name='Hora fin', null=True)
 
     class Meta:

@@ -80,8 +80,12 @@ function submit_with_ajax(url, title, content, parameters, callback) {
                 processData: false,
                 contentType: false,
                 success: function (request) {
-                    // loader.style.opacity = 0;
-                    // loader.style.visibility = 'hidden';
+
+                    // if (request.hasOwnProperty('info')) {
+                    //     message_info(request.info);
+                    //     callback(request);
+                    //     return false;
+                    // }
                     if (!request.hasOwnProperty('error')) {
                         callback(request);
                         return false;

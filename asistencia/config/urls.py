@@ -26,6 +26,7 @@ urlpatterns = [
     path('login/', include('core.login.urls')),
     path('user/', include('core.user.urls')),
     path('dashboard/', include('core.dashboard.urls')),
+    path('registration/', include('core.registration.urls')),
 ]
 
 if settings.DEBUG:

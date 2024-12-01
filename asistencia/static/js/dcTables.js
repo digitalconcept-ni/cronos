@@ -100,7 +100,7 @@ const drawTables = async (data) => {
             buttons: [
                 {
                     extend: 'excelHtml5',
-                    text: '<i class="bi bi-file-earmark-excel-fill"></i> Descargar Excel',
+                    text: '<i class="bi bi-file-earmark-excel-fill"></i>',
                     titleAttr: 'Excel',
                     className: 'btn btn-success btn-flat'
                 }],
