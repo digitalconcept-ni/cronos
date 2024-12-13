@@ -1,0 +1,147 @@
+{% extends 'list.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block head_list_extra %}
+    {# general code #}
+    <script src="{% static 'inscription/js/form.js' %}"></script>
+    {# functions for the subjects #}
+    <script src="{% static 'workload/js/form-subject.js' %}"></script>
+{% endblock %}
+
+{% block body_content %}
+    <form action="." method="post" data-url="{{ list_url }}">
+        <div class="card">
+            <div class="card-header">
+                {{ title }}
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body pt-2">
+                <input type="hidden" name="action" value="{{ action }}">
+                <!--INSERTAR Y INFORMACION DE LA INSCRIPCION  -->
+
+                <div class="row">
+
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="bi bi-search"></i>
+                                Detalle inscripcion
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Asignatura:</label>
+                                            <select name="subject" id="id_select_subject"
+                                                    class="form-control select2"></select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="id_group" class="form-label">Grupo:</label>
+                                            {{ formIs.group|add_class:'form-control' }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="id_group" class="form-label">Aula:</label>
+                                            {{ formIs.classroom|add_class:'form-control' }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {# FILA DE LOS INPUTS DE TIEMPO #}
+
+                                <div class="row">
+                                    <div class="col-md-4">
+
+                                    </div>
+                                    <div class="col-md-4">
+
+                                    </div>
+                                    <div class="col-md-4">
+
+                                    </div>
+                                    <div class="col-md-4">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="bi bi-info-circle"></i>
+                                Inscripcion
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group mt-2">
+                                    <label class="form-label">Carrera: </label>
+                                    {{ form.career|add_class:'form-control' }}
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <label class="form-label">Usuario: </label>
+                                    {{ form.user|add_class:'form-control' }}
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <label class="form-label">Turno: </label>
+                                    {{ form.turn|add_class:'form-control' }}
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <label class="form-label">Modalidad: </label>
+                                    {{ form.mode|add_class:'form-control' }}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <hr>
+                <!-- DATOS INSERTADOS / TABLA DONDE SE MUESTRAN LOS DATOS INSERTADOS -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped" id="tbListas">
+                            <thead>
+                            <tr>
+                                <th style="text-align: center;">Acciones</th>
+                                <th style="text-align: center;">Código</th>
+                                <th style="text-align: center;">Asignatura</th>
+                            </tr>
+
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <button type="submit" id="btn_registro" class="btn btn-success">
+                    <i class="bi bi-floppy-fill"></i>
+                </button>
+                <a href="{{ list_url }}" class="btn btn-danger"><i class="bi bi-x-circle-fill"></i></a>
+            </div>
+        </div>
+    </form>
+    {##}
+    {#    <script>#}
+    {#        list.items.credit = {{ detail|safe }};#}
+    {#        list.list();#}
+    {#    </script>#}
+{% endblock %}
