@@ -144,12 +144,6 @@ class Classroom(models.Model):
     def __str__(self):
         return f'{self.name} {self.get_type_display()}'
 
-    def toLIST(self):
-        item = [
-            self.id, self.name, self.get_type_display(), self.building, self.status,
-        ]
-        return item
-
     def toJSON(self):
         item = model_to_dict(self)
         item['type'] = self.get_type_display()
@@ -187,29 +181,19 @@ class Inscription(models.Model):
         return item
 
 
-class Grupos(models.Model):
+class Group(models.Model):
     code = models.CharField(max_length=7, null=True, verbose_name="Codigo")
     name = models.CharField(max_length=50, verbose_name='Nombre', null=True)
 
     class Meta:
-        verbose_name = 'grupo'
-        verbose_name_plural = 'grupos'
+        verbose_name = 'group'
+        verbose_name_plural = 'groups'
         ordering = ['code']
-
-    def toJSON(self):
-        item = model_to_dict(self)
-        return item
-
-    def toLIST(self):
-        item = [
-            self.id, self.code, self.name, self.id
-        ]
-        return item
 
 
 class InscriptionSubject(models.Model):
     inscription = models.ForeignKey(Inscription, on_delete=models.CASCADE, verbose_name='Inscripcion', null=True)
-    grupo = models.ForeignKey(Grupos, on_delete=models.CASCADE, verbose_name='Grupo', null=True)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, verbose_name='Grupo', null=True)
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE, verbose_name='Aula', null=True)
     user_subject = models.ForeignKey(UserSubject, on_delete=models.CASCADE, verbose_name='Asignatura',
                                      null=True)  # Relacion con
@@ -222,22 +206,3 @@ class InscriptionSubject(models.Model):
         verbose_name = 'inscriptionsubect'
         verbose_name_plural = 'inscriptionssubects'
         ordering = ['-date_start']
-
-
-class attendanceSubject(models.Model):
-    inscription = models.ForeignKey(Inscription, on_delete=models.CASCADE, verbose_name='Inscripcion', null=True)
-    grupo = models.ForeignKey(Grupos, on_delete=models.CASCADE, verbose_name='Grupo', null=True)
-    classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE, verbose_name='Aula', null=True)
-    user_subject = models.ForeignKey(UserSubject, on_delete=models.CASCADE, verbose_name='Asignatura',
-                                     null=True)  # Relacion con
-    date_start = models.DateField(verbose_name='Fecha inicio', null=True)
-    date_end = models.DateField(verbose_name='Fecha fin', null=True)
-    time_start = models.TimeField(verbose_name='Hora inicio', null=True)
-    time_end = models.TimeField(verbose_name='Hora fin', null=True)
-
-    class Meta:
-        verbose_name = 'inscriptionsubect'
-        verbose_name_plural = 'inscriptionssubects'
-        ordering = ['-date_start']
-
-
