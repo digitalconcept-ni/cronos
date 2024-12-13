@@ -1,7 +1,7 @@
-var Inscription = {
+var classroom = {
     config: [
         {
-            targets: [0,1,2],
+            targets: [0, 1, 2, 3, 4, 5],
             class: 'text-center',
         },
         {
@@ -19,9 +19,9 @@ var Inscription = {
         let data = {
             'data': {'action': 'search'},
             'inserInto': 'rowList',
-            'th': ['Nro', 'Nombre', 'Opciones'],
+            'th': ['Nro', 'Nombre', 'Tipo', 'Edificio', 'Estado', 'Opciones'],
             'table': 'tableList',
-            'config': Inscription.config,
+            'config': classroom.config,
             'modal': false,
         }
         drawTables(data);
@@ -29,5 +29,5 @@ var Inscription = {
 };
 
 $(function () {
-    Inscription.list();
+    classroom.list();
 });

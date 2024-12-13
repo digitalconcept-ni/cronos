@@ -1,7 +1,7 @@
-var Inscription = {
+var group = {
     config: [
         {
-            targets: [0,1,2],
+            targets: [0, 1, 2, 3],
             class: 'text-center',
         },
         {
@@ -19,9 +19,9 @@ var Inscription = {
         let data = {
             'data': {'action': 'search'},
             'inserInto': 'rowList',
-            'th': ['Nro', 'Nombre', 'Opciones'],
+            'th': ['Nro', 'Codigo', 'Nombre', 'Opciones'],
             'table': 'tableList',
-            'config': Inscription.config,
+            'config': group.config,
             'modal': false,
         }
         drawTables(data);
@@ -29,5 +29,5 @@ var Inscription = {
 };
 
 $(function () {
-    Inscription.list();
+    group.list();
 });

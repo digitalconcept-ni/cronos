@@ -2,10 +2,8 @@ from django.urls import path
 
 from core.registration.views.career import CareerListView, CareerCreateView, CareerChangeView
 from core.registration.views.departament import *
-from core.registration.views.inscription import InscriptionListView, InscriptionAddView
 from core.registration.views.pensum import PensumListView, PensumCreateView, PensumChangeView
 from core.registration.views.subject import SubjectListView, SubjectCreateView, SubjectChangeView
-from core.registration.views.workload import WorkloadListView, WorkloadAddView
 
 urlpatterns = [
     # departament
@@ -23,16 +21,9 @@ urlpatterns = [
     path('pensum/add/', PensumCreateView.as_view(), name='pensum_add'),
     path('pensum/change/<int:pk>/', PensumChangeView.as_view(), name='pensum_change'),
 
-    # Asignatura
+
     path('subject/', SubjectListView.as_view(), name='subject_list'),
     path('subject/add/', SubjectCreateView.as_view(), name='subject_add'),
     path('subject/change/<int:pk>/', SubjectChangeView.as_view(), name='subject_change'),
 
-    #  workload
-    path('workload/', WorkloadListView.as_view(), name='workload_list'),
-    path('workload/add/', WorkloadAddView.as_view(), name='workload_add'),
-
-    # Inscription
-    path('inscriptions/', InscriptionListView.as_view(), name='inscription_list'),
-    path('inscriptions/add/', InscriptionAddView.as_view(), name='inscription_add'),
 ]
