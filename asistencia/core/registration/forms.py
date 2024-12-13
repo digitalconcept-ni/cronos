@@ -64,82 +64,8 @@ class PensumForm(ModelForm):
 
 class SubjectForm(ModelForm):
 
-
     class Meta:
         model = Subject
-        fields = '__all__'
-
-    def save(self, commit=True):
-        data = {}
-        form = super()
-        try:
-            if form.is_valid():
-                instance = form.save()
-                data = instance.toJSON()
-            else:
-                data['error'] = form.errors
-        except Exception as e:
-            data['error'] = str(e)
-        return data
-
-class GroupForm(ModelForm):
-    class Meta:
-        model = Grupos
-        fields = '__all__'
-
-    def save(self, commit=True):
-        data = {}
-        form = super()
-        try:
-            if form.is_valid():
-                instance = form.save()
-                data = instance.toJSON()
-            else:
-                data['error'] = form.errors
-        except Exception as e:
-            data['error'] = str(e)
-        return data
-
-class ClassroomForm(ModelForm):
-    class Meta:
-        model = Classroom
-        fields = '__all__'
-
-    def save(self, commit=True):
-        data = {}
-        form = super()
-        try:
-            if form.is_valid():
-                instance = form.save()
-                data = instance.toJSON()
-            else:
-                data['error'] = form.errors
-        except Exception as e:
-            data['error'] = str(e)
-        return data
-
-
-class InscriptionForm(ModelForm):
-    class Meta:
-        model = Inscription
-        fields = '__all__'
-
-    def save(self, commit=True):
-        data = {}
-        form = super()
-        try:
-            if form.is_valid():
-                instance = form.save()
-                data = instance.toJSON()
-            else:
-                data['error'] = form.errors
-        except Exception as e:
-            data['error'] = str(e)
-        return data
-
-class InscriptionForm(ModelForm):
-    class Meta:
-        model = Inscription
         fields = '__all__'
 
     def save(self, commit=True):
