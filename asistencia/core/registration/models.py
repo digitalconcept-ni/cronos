@@ -92,7 +92,7 @@ class Subject(models.Model):
         ordering = ['-id']
 
     def __str__(self):
-        return f'{self.name} - {self.code}'
+        return f'{self.code} - {self.name}'
 
     def toJSON(self):
         item = model_to_dict(self)
@@ -119,6 +119,10 @@ class UserSubject(models.Model):
         verbose_name = 'usuario_asignatura'
         verbose_name_plural = 'usuarios_asignaturas'
         ordering = ['subject']
+
+    def toJSON(self):
+        item = model_to_dict(self)
+        return item
 
 
 class Classroom(models.Model):
@@ -167,6 +171,14 @@ class Inscription(models.Model):
         verbose_name = 'inscripcion'
         verbose_name_plural = 'inscripciones'
         ordering = ['career']
+
+    def toLIST(self):
+        user = f'{self.user.first_name} {self.user.last_name}'
+
+        item = [
+            self.id, self.career.name, user, self.get_turn_display(), self.get_turn_display()
+        ]
+        return item
 
 
 class Group(models.Model):

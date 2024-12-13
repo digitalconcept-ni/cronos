@@ -12,11 +12,17 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#register-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Registro academico</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-book"></i><span>Registro academico</span><i
+                    class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="register-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="components-spinners.html">
+                    <a href="{% url 'workload_list' %}">
+                        <i class="bi bi-circle"></i><span>Carga horaria</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'inscription_list' %}">
                         <i class="bi bi-circle"></i><span>Inscripciones</span>
                     </a>
                 </li>
@@ -33,11 +39,12 @@
             </ul>
         </li>
         <!-- End Branches Resgistro academico Nav -->
-        
-        
+
+
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#incription-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-card-checklist"></i><span>Inscripción académica</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-card-checklist"></i><span>Inscripción académica</span><i
+                    class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="incription-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
@@ -64,6 +71,13 @@
         </li>
         <!-- End Branches Inscripcion academica Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{% url 'user_list' %}">
+                <i class="bi bi-list-check"></i>
+                <span>Asistencia</span>
+            </a>
+        </li><!-- End User Page Nav -->
+        
         <li class="nav-item">
             <a class="nav-link collapsed" href="{% url 'user_list' %}">
                 <i class="bi bi-people"></i>

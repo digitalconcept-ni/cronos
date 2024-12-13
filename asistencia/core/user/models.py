@@ -1,7 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.forms import model_to_dict
-# from crum import get_current_request
 from config import settings
 
 
@@ -38,6 +37,14 @@ class User(AbstractUser):
             groups, self.id
         ]
         return data
+
+    def toListSubject(self):
+        subjects = [i.subject.__str__() for i in self.usersubject_set.all()]
+        print(subjects)
+        item =[
+            self.id, self.get_full_name(), subjects, self.id
+        ]
+        return item
 
     def toJSON(self):
         item = model_to_dict(self, exclude=['password', 'user_permissions', 'last_login'])
